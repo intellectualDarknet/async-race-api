@@ -41,8 +41,8 @@ const PORT = 3000;
 
 const state = { velocity: {}, blocked: {} };
 
+server.options('*'. cors())
 server.use(middlewares);
-server.use(cors());
 
 server.patch('/engine', (req, res) => {
     const { id, status } = req.query;
