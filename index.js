@@ -41,7 +41,8 @@ const PORT = 3000;
 
 const state = { velocity: {}, blocked: {} };
 
-server.options('*', cors())
+server.use(cors())
+
 server.use(middlewares);
 
 server.patch('/engine', (req, res) => {
