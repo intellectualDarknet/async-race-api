@@ -1,9 +1,8 @@
 const Car = require('../models/carModel.js');
-const Winner = require('../models/winnerModel.js');
 
-class ViewsController {
+export class CarController {
 
-  addCar = async (req, res) => {
+  createCar = async (req, res) => {
     const { name, color } = req.body
     const car = await Car.create({ name, color})
     res.status(200).json({
@@ -12,11 +11,32 @@ class ViewsController {
     })
   }
 
+  create100Cars = async (req, res) => {
+    const car = await Car.insertMany(req.body.array)
+    res.status(200).json({
+      status: 'success',
+      car
+    })
+  }
+
+  getCars = async (req, res) => {
+    const cars = await Car.find()
+    res.status(200).json({
+      status: 'success',
+      cars
+    })
+  }
+
+  getCarswithLimit = async (req, res) => {
+    const cars = await Car.find()
+    res.status(200).json({
+      status: 'success',
+      cars
+    })
+  }
+
   updateCar = async (req, res) => {
-    const doc = await Winner.findByIdAndUpdate(req.params.name || req.body.name, req.body, {
-      new: true,
-      runValidators: true
-    });
+
   }
 
   engine = async (req, res) => {
@@ -71,27 +91,6 @@ class ViewsController {
     }
   }
 
-  addUpdateWinner = async (req, res) => {
-
-  }
-
-  removeWinner = async (req, res) => {
-
-  }
-
-  addWinner = async (req, res) => {
-    const { name, color } = req.body
-    const car = await Car.create({ name, color})
-    res.status(200).json({
-      status: 'success',
-      car
-    })
-  }
-
-  updateWinner = async (req, res) => {
-
-  }
-  
 }
 
-module.exports = new ViewsController();
+module.exports = new CarController();

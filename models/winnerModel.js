@@ -6,7 +6,8 @@ const WinnerSchema = new mongoose.Schema({
     ref: 'User',
     index: true
   },
-  color: String
+  wins: Number,
+  time: Number,
 })
 
 
