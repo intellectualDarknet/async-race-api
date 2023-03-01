@@ -41,7 +41,10 @@ const PORT = 3000;
 
 const state = { velocity: {}, blocked: {} };
 
-server.use(cors())
+server.use(cors({
+    methods:['GET,HEAD,PUT,PATCH,POST,DELETE'],
+    allowedHeaders: ['Content-Type']
+}))
 
 server.use(middlewares);
 
